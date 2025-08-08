@@ -55,6 +55,7 @@ signals:
     void chatAvailableReactionsUpdated(const qlonglong &chatId, const QVariantMap &availableReactions);
     void basicGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
     void superGroupUpdated(qlonglong groupId, const QVariantMap &groupInformation);
+    void forumTopicUpdated(qlonglong chatId, const QVariantMap &forumTopicInformation);
     void chatOnlineMemberCountUpdated(const QString &chatId, int onlineMemberCount);
     void messagesReceived(const QVariantList &messages, int totalCount);
     void messageLinkInfoReceived(const QString &url, const QVariantMap &messageLinkInfo, const QString &extra);
@@ -70,6 +71,7 @@ signals:
     void messageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup);
     void messagesDeleted(qlonglong chatId, const QList<qlonglong> &messageIds);
     void chats(const QVariantMap &chats);
+    void topics(const QVariantMap &topics);
     void chat(const QVariantMap &chats);
     void recentStickersUpdated(const QVariantList &stickerIds);
     void stickers(const QVariantList &stickers);
@@ -156,6 +158,7 @@ private:
     void processUpdateMessageContent(const QVariantMap &receivedInformation);
     void processUpdateDeleteMessages(const QVariantMap &receivedInformation);
     void processChats(const QVariantMap &receivedInformation);
+    void processTopics(const QVariantMap &receivedInformation);
     void processChat(const QVariantMap &receivedInformation);
     void processUpdateRecentStickers(const QVariantMap &receivedInformation);
     void processStickers(const QVariantMap &receivedInformation);

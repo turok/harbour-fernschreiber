@@ -166,6 +166,7 @@ public:
     Q_INVOKABLE void registerUser(const QString &firstName, const QString &lastName);
     Q_INVOKABLE void logout();
     Q_INVOKABLE void getChats();
+    Q_INVOKABLE void getForumTopics(const qlonglong supergroupId);
     Q_INVOKABLE void downloadFile(int fileId);
     Q_INVOKABLE void openChat(const QString &chatId);
     Q_INVOKABLE void closeChat(const QString &chatId);
@@ -302,6 +303,7 @@ signals:
     void messageEditedUpdated(qlonglong chatId, qlonglong messageId, const QVariantMap &replyMarkup);
     void messagesDeleted(qlonglong chatId, const QList<qlonglong> &messageIds);
     void chatsReceived(const QVariantMap &chats);
+    void topicsReceived(const QVariantMap &topics);
     void chatReceived(const QVariantMap &chat);
     void secretChatReceived(qlonglong secretChatId, const QVariantMap &secretChat);
     void secretChatUpdated(qlonglong secretChatId, const QVariantMap &secretChat);
@@ -408,6 +410,7 @@ private:
     QVariantMap unreadChatInformation;
     QHash<qlonglong,Group*> basicGroups;
     QHash<qlonglong,Group*> superGroups;
+    QHash<qlonglong,QVariantMap> groupTopics;
     EmojiSearchWorker emojiSearchWorker;
     QStringList activeEmojiReactions;
 

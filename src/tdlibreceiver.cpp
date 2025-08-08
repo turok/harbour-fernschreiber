@@ -142,6 +142,7 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateMessageContent", &TDLibReceiver::processUpdateMessageContent);
     handlers.insert("updateDeleteMessages", &TDLibReceiver::processUpdateDeleteMessages);
     handlers.insert("chats", &TDLibReceiver::processChats);
+    handlers.insert("forumTopics", &TDLibReceiver::processTopics);
     handlers.insert("chat", &TDLibReceiver::processChat);
     handlers.insert("updateRecentStickers", &TDLibReceiver::processUpdateRecentStickers);
     handlers.insert("stickers", &TDLibReceiver::processStickers);
@@ -521,6 +522,11 @@ void TDLibReceiver::processUpdateDeleteMessages(const QVariantMap &receivedInfor
 void TDLibReceiver::processChats(const QVariantMap &receivedInformation)
 {
     emit chats(receivedInformation);
+}
+
+void TDLibReceiver::processTopics(const QVariantMap &receivedInformation)
+{
+    emit topics(receivedInformation);
 }
 
 void TDLibReceiver::processChat(const QVariantMap &receivedInformation)

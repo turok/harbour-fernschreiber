@@ -68,6 +68,7 @@ Page {
     property bool doSendBotStartMessage
     property string sendBotStartMessageParameter
     property var availableReactions
+    property var messageThreadId;
     signal resetElements()
     signal elementSelected(int elementIndex)
     signal navigatedTo(int targetIndex)

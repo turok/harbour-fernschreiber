@@ -1933,6 +1933,17 @@
     </message>
 </context>
 <context>
+    <name>TopicsPage</name>
+    <message>
+        <source>No matching chats found.</source>
+        <translation type="unfinished">Чатов не найдено.</translation>
+    </message>
+    <message>
+        <source>The Group doesn&apos;thave topics</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>VideoPage</name>
     <message>
         <source>Download of %1 successful.</source>

@@ -265,6 +265,7 @@ Page {
             }
         }
         onChatsReceived: {
+
             if(chats && chats.chat_ids && chats.chat_ids.length === 0) {
                 chatListCreatedTimer.restart();
             }
@@ -403,10 +404,20 @@ Page {
                 ownUserId: overviewPage.ownUserId
                 isVerified: is_verified
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
-                        chatInformation : display,
-                        chatPicture: photo_small
-                    })
+                    const supergroupInfo = tdLibWrapper.getSuperGroup(group_id);
+                    if (supergroupInfo.is_forum) {
+                        pageStack.push(Qt.resolvedUrl("../pages/TopicsPage.qml"), {
+                            chatId: chat_id,
+                            groupInfo: display,
+                            supergroupInformation : supergroupInfo,
+                            chatPicture: photo_small
+                        })
+                    } else {
+                        pageStack.push(Qt.resolvedUrl("../pages/ChatPage.qml"), {
+                            chatInformation : display,
+                            chatPicture: photo_small
+                        })
+                    }
                 }
             }
 

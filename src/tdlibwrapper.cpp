@@ -154,6 +154,7 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(messageContentUpdated(qlonglong, qlonglong, QVariantMap)), this, SIGNAL(messageContentUpdated(qlonglong, qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)), this, SIGNAL(messagesDeleted(qlonglong, QList<qlonglong>)));
     connect(this->tdLibReceiver, SIGNAL(chats(QVariantMap)), this, SIGNAL(chatsReceived(QVariantMap)));
+    connect(this->tdLibReceiver, SIGNAL(topics(QVariantMap)), this, SIGNAL(topicsReceived(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(chat(QVariantMap)), this, SLOT(handleChatReceived(QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(secretChat(qlonglong, QVariantMap)), this, SLOT(handleSecretChatReceived(qlonglong, QVariantMap)));
     connect(this->tdLibReceiver, SIGNAL(secretChatUpdated(qlonglong, QVariantMap)), this, SLOT(handleSecretChatUpdated(qlonglong, QVariantMap)));
@@ -287,6 +288,16 @@ void TDLibWrapper::getChats()
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "loadChats");
     requestObject.insert("limit", 5);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getForumTopics(const qlonglong supergroupId)
+{
+    LOG("Getting forum topics");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getForumTopics");
+    requestObject.insert("chat_id", supergroupId);
+    requestObject.insert("limit", 20);
     this->sendRequest(requestObject);
 }
 

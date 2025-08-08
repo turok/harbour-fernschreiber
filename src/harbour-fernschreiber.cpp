@@ -56,6 +56,7 @@
 #include "fernschreiberutils.h"
 #include "knownusersmodel.h"
 #include "contactsmodel.h"
+#include "topiclistmodel.h"
 
 // The default filter can be overridden by QT_LOGGING_RULES envinronment variable, e.g.
 // QT_LOGGING_RULES="fernschreiber.*=true" harbour-fernschreiber
@@ -153,6 +154,9 @@ int main(int argc, char *argv[])
 
     ChatListModel chatListModel(tdLibWrapper, appSettings);
     context->setContextProperty("chatListModel", &chatListModel);
+
+    TopicListModel topicListModel(tdLibWrapper, appSettings);
+    context->setContextProperty("topicListModel", &topicListModel);
 
     ChatModel chatModel(tdLibWrapper);
     context->setContextProperty("chatModel", &chatModel);

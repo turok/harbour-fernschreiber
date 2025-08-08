@@ -41,7 +41,8 @@ SOURCES += src/harbour-fernschreiber.cpp \
     src/tdlibreceiver.cpp \
     src/tdlibwrapper.cpp \
     src/textfiltermodel.cpp \
-    src/tgsplugin.cpp
+    src/tgsplugin.cpp \
+    src/topiclistmodel.cpp
 
 DISTFILES += qml/harbour-fernschreiber.qml \
     qml/components/AudioPreview.qml \
@@ -146,6 +147,7 @@ DISTFILES += qml/harbour-fernschreiber.qml \
     qml/pages/PollResultsPage.qml \
     qml/pages/SearchChatsPage.qml \
     qml/pages/SettingsPage.qml \
+    qml/pages/TopicsPage.qml \
     qml/pages/VideoPage.qml \
     rpm/harbour-fernschreiber.changes \
     rpm/harbour-fernschreiber.spec \
@@ -241,9 +243,11 @@ HEADERS += \
     src/tdlibfile.h \
     src/tdlibreceiver.h \
     src/tdlibsecrets.h \
+    src/tdlibsecrets.h \
     src/tdlibwrapper.h \
     src/textfiltermodel.h \
-    src/tgsplugin.h
+    src/tgsplugin.h \
+    src/topiclistmodel.h
 
 # https://github.com/Samsung/rlottie.git
 
